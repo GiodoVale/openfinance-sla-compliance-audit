@@ -2,7 +2,7 @@ Análise de Conformidade Regulatória — APIs Open Finance
 
 Auditoria de dados aplicada a métricas de performance de instituições financeiras (IFs) no ecossistema Open Finance, com foco em conformidade de SLA e identificação de padrões de risco.
 
-Nota: este é um case técnico de estudo, desenvolvido a partir de dados anonimizados (instituições identificadas apenas como "IF 1" e "IF 2"). Não representa um projeto de cliente real ou dados confidenciais.
+Nota sobre os dados: este projeto usa um dataset sintético, gerado para reproduzir de forma independente a metodologia de um case técnico de estudo sobre Open Finance. Nenhum dado real, confidencial ou de terceiros foi utilizado.
 
 🎯 Objetivo
 
@@ -10,38 +10,35 @@ Auditar a conformidade de instituições financeiras participantes do Open Finan
 
 Pareamento Diário — % de chamadas de API processadas com sucesso
 Desempenho (P95) — tempo de resposta em que 95% das chamadas foram mais rápidas, comparado ao SLA definido por API
-
-O objetivo final é diagnosticar problemas de conformidade e fornecer base técnica para recomendações de ação corretiva.
-
 🔎 Principais Insights
 
-1. Risco Agudo (IF 1) — comprovado por outliers catastróficos Instituição geralmente estável, mas com dias de P95 acima de 15.000ms (SLA: 1.300–1.500ms) e quedas de pareamento a 0%, indicando perda total de registro em momentos de pico.
+1. Risco Agudo (IF 1) — comprovado por outliers catastróficos Instituição geralmente estável (pareamento acima de 97% na maior parte dos dias), mas com dias isolados de P95 acima de 14.000ms (SLA: 1.300–1.500ms) e quedas de pareamento a menos de 10%, indicando fragilidade de infraestrutura em momentos de pico.
 
-2. Risco Crônico (IF 2) — falha estrutural, não pontual A API Fixed Incomes da IF 2 ficou em desconformidade de SLA por 19 dias no mês — um padrão persistente, não um evento isolado.
+2. Risco Crônico (IF 2) — falha estrutural, não pontual A API Fixed Incomes da IF 2 ficou em desconformidade de SLA por 24 dos 30 dias analisados — um padrão persistente, não um evento isolado.
 
-3. A média do sistema mascara o risco real A performance superior da IF 1 eleva a média consolidada do ecossistema. Isoladamente, o pareamento médio da IF 2 (79,43%) fica bem abaixo da meta de 95%, revelando o "elo fraco" que compromete a confiança de todo o sistema.
+3. A média do sistema mascara o risco real A performance da IF 1 eleva a média consolidada do ecossistema. Isoladamente, o pareamento médio da IF 2 na API Fixed Incomes (≈77,8%) fica bem abaixo da meta de 95%, revelando o "elo fraco" que compromete a confiança de todo o sistema.
 
-Conclusão: os dois perfis de risco exigem respostas diferentes — um Plano de Mitigação focado em resiliência para a IF 1, e um Plano de Ação Corretiva mais rigoroso e supervisionado para a IF 2.
+Conclusão: os dois perfis de risco exigem respostas diferentes — um Plano de Mitigação focado em resiliência de infraestrutura para a IF 1, e um Plano de Ação Corretiva mais rigoroso e supervisionado para a IF 2.
 
 📊 Visualizações
-Gráficos de linha de pareamento diário por instituição e API, com meta de 95%
-Box plots de distribuição de desempenho (P95) por API, com faixas de SLA
-Heatmap de conformidade diária (Conforme/Desconforme) por instituição
-Gráfico de quadrantes: Pareamento (%) vs. Desempenho (P95), classificando cada dia em Ideal / Falha de Pareamento / Falha de Desempenho / Crítico
-
-
+Arquivo	Conteúdo
+images/01_pareamento_diario.png	Evolução do pareamento diário, IF 1 vs IF 2, com meta de 95%
+images/02_boxplot_desempenho_if1.png	Distribuição do P95 por API (IF 1), com faixas de SLA
+images/03_heatmap_if1.png / 03_heatmap_if2.png	Heatmap de conformidade diária por instituição
+images/04_quadrante_performance.png	Pareamento vs. Desempenho, classificando cada dia em Ideal / Falha de Pareamento / Falha de Desempenho / Crítico
 🛠️ Metodologia
-Importação e limpeza dos dados (padronização de nomes de colunas e APIs)
+Geração de dataset sintético simulando 30 dias de chamadas de API para 2 instituições e 2 APIs
 Cálculo de métricas diárias agrupadas por data, instituição e API
-Definição de regras de conformidade (limite de SLA por API, limite de dias em desconformidade)
-Visualização exploratória e por quadrante de risco
+Definição de regras de conformidade (SLA por API, limite de dias em desconformidade)
+Visualização exploratória e classificação por quadrante de risco
 Síntese de insights e recomendações
 💻 Tecnologias
 Python (Pandas, NumPy)
-Visualização: Plotly, Matplotlib, Seaborn
+Visualização: Matplotlib, Seaborn
 📁 Estrutura
-├── OpenFinance_SLA_Compliance_Audit_Giovanna_do_Vale.ipynb   # notebook completo da análise
-├── /images                                   # prints dos gráficos principais
+├── OpenFinance_SLA_Compliance_Audit.ipynb   # notebook completo da análise
+├── synthetic_openfinance_data.csv            # dataset sintético gerado
+├── images/                                    # gráficos exportados
 └── README.md
 👤 Autora
 
