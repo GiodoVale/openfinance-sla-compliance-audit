@@ -22,31 +22,36 @@ Conclusão: os dois perfis de risco exigem respostas diferentes — um Plano de 
 
 📊 Visualizações
 
-Evolução do pareamento diário — IF 1 vs IF 2, com meta de 95% Mostrar Imagem
+Evolução do pareamento diário — IF 1 vs IF 2, com meta de 95% ![Pareamento diário](https://github.com/GiodoVale/openfinance-sla-compliance-audit/blob/main/01_pareamento_diario.png?raw=true)
 
-Distribuição do desempenho (P95) por API — IF 1, com faixas de SLA Mostrar Imagem
+Distribuição do desempenho (P95) por API — IF 1, com faixas de SLA ![Boxplot desempenho IF1](https://github.com/GiodoVale/openfinance-sla-compliance-audit/blob/main/02_boxplot_desempenho_if1.png?raw=true)
 
-Heatmap de conformidade diária por instituição Mostrar Imagem Mostrar Imagem
+Heatmap de conformidade diária por instituição ![Heatmap IF1](https://github.com/GiodoVale/openfinance-sla-compliance-audit/blob/main/03_heatmap_if1.png?raw=true)
+![Heatmap IF2](https://github.com/GiodoVale/openfinance-sla-compliance-audit/blob/main/03_heatmap_if2.png?raw=true)
 
-Quadrante: Pareamento (%) vs. Desempenho (P95) Mostrar Imagem
+Quadrante: Pareamento (%) vs. Desempenho (P95) ![Quadrante de performance](https://github.com/GiodoVale/openfinance-sla-compliance-audit/blob/main/04_quadrante_performance.png?raw=true)
 
 🛠️ Metodologia
-Geração de dataset sintético simulando 30 dias de chamadas de API para 2 instituições e 2 APIs
-Cálculo de métricas diárias agrupadas por data, instituição e API
-Definição de regras de conformidade (SLA por API, limite de dias em desconformidade)
-Visualização exploratória e classificação por quadrante de risco
-Síntese de insights e recomendações
+- Geração de dataset sintético simulando 30 dias de chamadas de API para 2 instituições e 2 APIs
+- Cálculo de métricas diárias agrupadas por data, instituição e API
+- Definição de regras de conformidade (SLA por API, limite de dias em desconformidade)
+
 💻 Tecnologias
-Python (Pandas, NumPy)
-Visualização: Matplotlib, Seaborn
+- Python (Pandas, NumPy)
+- Visualização: Matplotlib, Seaborn
+
+
 📁 Estrutura
-├── OpenFinance_SLA_Compliance_Audit.ipynb        # notebook completo da análise
-├── dados_financeiros_abertos_sinteticos.csv       # dataset sintético gerado
-├── 01_pareamento_diario.png                       # gráficos exportados
+```
+|── OpenFinance_SLA_Compliance_Audit.ipynb # notebook completo da análise
+├── dados_financeiros_abertos_sinteticos.csv # dataset sintético gerado
+├── 01_pareamento_diario.png # gráficos exportados
 ├── 02_boxplot_desempenho_if1.png
 ├── 03_heatmap_if1.png / 03_heatmap_if2.png
 ├── 04_quadrante_performance.png
 └── README.md
-👤 Autora
-
-Giovanna do Vale Santos Analista de Dados | Analytics | BI | Data Quality & Governance LinkedIn · GitHub
+```
+👤 Autora<br>
+**Giovanna do Vale Santos**<br>
+Analista de Dados | Analytics | BI | Data Quality & Governance<br>
+LinkedIn · GitHub
